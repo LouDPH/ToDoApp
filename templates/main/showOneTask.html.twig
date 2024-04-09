@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<h2>Task details</h2>
+		<hr>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td class="fw-bold">ID</td>
+					<td>{{ task.id }}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">List</td>
+					<td>{{ listname }}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">Task</td>
+					<td>{{ task.task }}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">Category</td>
+					<td>{{ task.category }}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">Deadline</td>
+					<td>{{task.deadline|date('Y-m-d')}}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">Description</td>
+					<td>{{ task.description }}</td>
+				</tr>
+				<tr>
+					<td class="fw-bold">Finished</td>
+					<td>
+						{% if task.finished == 1 %}
+							yes
+						{% else %}
+							no
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="{{ path('app.all_tasks', {listname: listname}) }}">
+			<button class="btn btn-primary btn-sm">Back</button>
+		</a>
+	</div>
+{% endblock %}
